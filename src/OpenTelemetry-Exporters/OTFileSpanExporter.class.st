@@ -1,14 +1,13 @@
 Class {
-	#name : 'OTFileSpanExporter',
-	#superclass : 'OTSpanExporter',
+	#name : #OTFileSpanExporter,
+	#superclass : #OTSpanExporter,
 	#instVars : [
 		'folder'
 	],
-	#category : 'OpenTelemetry-Exporters',
-	#package : 'OpenTelemetry-Exporters'
+	#category : 'OpenTelemetry-Exporters'
 }
 
-{ #category : 'exporting' }
+{ #category : #exporting }
 OTFileSpanExporter >> export: spans [
 
 	(self folder asFileReference / DateAndTime now asString , 'ston')
@@ -16,13 +15,13 @@ OTFileSpanExporter >> export: spans [
 		STON put: spans onStream: stream ]
 ]
 
-{ #category : 'hook' }
+{ #category : #hook }
 OTFileSpanExporter >> folder [
 
 	^ folder ifNil: [ folder := 'pharo-local/OpenTelemetry/traces' ]
 ]
 
-{ #category : 'hook' }
+{ #category : #hook }
 OTFileSpanExporter >> folder: aString [
 
 	folder := aString
